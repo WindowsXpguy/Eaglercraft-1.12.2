@@ -1,0 +1,607 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+:root {
+    --minecraft-green: #54c754;
+    --minecraft-brown: #885235;
+    --minecraft-dirt: #866043;
+    --minecraft-grass: #1abc9c;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'VT323', monospace;
+    background-color: var(--minecraft-dirt);
+    color: white;
+    background-image: 
+        linear-gradient(rgba(0, 0, 0, 0.3) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.3) 1px, transparent 1px);
+    background-size: 16px 16px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    border: 4px solid #000;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+.container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='16' height='16' fill='%23000000' fill-opacity='0.1'/%3E%3C/svg%3E");
+    opacity: 0.1;
+    pointer-events: none;
+}
+
+.minecraft-title {
+    font-size: 4em;
+    text-shadow: 
+        2px 2px #000,
+        -2px -2px #000,
+        2px -2px #000,
+        -2px 2px #000;
+    margin-bottom: 40px;
+    letter-spacing: 2px;
+    color: #FFFF54;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.minecraft-button {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #727272;
+    border: 3px solid #000;
+    text-decoration: none;
+    color: white;
+    font-size: 1.5em;
+    min-width: 200px;
+    position: relative;
+    transition: all 0.1s;
+    box-shadow: 
+        inset -2px -4px #0006,
+        inset 2px 2px #fff7;
+    border-radius: 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.minecraft-button:hover {
+    background-color: #8b8b8b;
+    transform: translateY(-2px);
+    box-shadow: 
+        inset -2px -4px #0006,
+        inset 2px 2px #fff7,
+        0 4px 8px rgba(0, 0, 0, 0.3);
+    text-shadow: 2px 2px rgba(0, 0, 0, 0.5);
+}
+
+.minecraft-button:active {
+    transform: translateY(0);
+    box-shadow: 
+        inset 2px 2px #0006,
+        inset -2px -4px #fff7;
+}
+
+.minecraft-world {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    margin: 40px 0;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
+}
+
+.grass-block {
+    width: 64px;
+    height: 64px;
+    background: linear-gradient(
+        to bottom,
+        var(--minecraft-grass) 0%,
+        var(--minecraft-grass) 20%,
+        var(--minecraft-dirt) 20%,
+        var(--minecraft-dirt) 100%
+    );
+    border: 2px solid #000;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.grass-block:hover {
+    transform: translateY(-4px);
+}
+
+.grass-block::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 20%;
+    background-image: 
+        linear-gradient(90deg, transparent 50%, rgba(255, 255, 255, 0.1) 50%),
+        linear-gradient(transparent 50%, rgba(255, 255, 255, 0.1) 50%);
+    background-size: 4px 4px;
+}
+
+.games-section {
+    margin-top: 60px;
+}
+
+.games-section h2 {
+    font-size: 2.5em;
+    text-shadow: 
+        2px 2px #000,
+        -2px -2px #000,
+        2px -2px #000,
+        -2px 2px #000;
+    color: #54c754;
+    margin-bottom: 30px;
+}
+
+.game-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.game-card {
+    background-color: #34495e;
+    border: 4px solid #000;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.2s;
+    box-shadow: 
+        inset -2px -4px #0006,
+        inset 2px 2px #fff7;
+    clip-path: polygon(
+        0 4px,
+        4px 0,
+        calc(100% - 4px) 0,
+        100% 4px,
+        100% calc(100% - 4px),
+        calc(100% - 4px) 100%,
+        4px 100%,
+        0 calc(100% - 4px)
+    );
+}
+
+.game-card:hover {
+    transform: scale(1.05);
+}
+
+.game-title {
+    font-size: 1.5em;
+    margin: 10px 0;
+}
+
+.server-section {
+    margin-top: 60px;
+}
+
+.server-section h2 {
+    font-size: 2.5em;
+    text-shadow: 
+        2px 2px #000,
+        -2px -2px #000,
+        2px -2px #000,
+        -2px 2px #000;
+    color: #54c754;
+    margin-bottom: 30px;
+}
+
+.server-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.server-card {
+    background-color: #34495e;
+    border: 4px solid #000;
+    padding: 20px;
+    text-align: left;
+    transition: transform 0.2s;
+    box-shadow: 
+        inset -2px -4px #0006,
+        inset 2px 2px #fff7;
+    position: relative;
+    overflow: hidden;
+    clip-path: polygon(
+        0 4px,
+        4px 0,
+        calc(100% - 4px) 0,
+        100% 4px,
+        100% calc(100% - 4px),
+        calc(100% - 4px) 100%,
+        4px 100%,
+        0 calc(100% - 4px)
+    );
+}
+
+.server-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #54c754, #FFFF54);
+}
+
+.server-card:hover {
+    transform: scale(1.02);
+}
+
+.server-name {
+    font-size: 1.5em;
+    margin: 0 0 10px 0;
+    color: #FFFF54;
+}
+
+.server-info {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    border-radius: 4px;
+    margin: 10px 0;
+}
+
+.address-label {
+    color: #FFFF54;
+    font-size: 0.9em;
+    margin-top: 10px;
+}
+
+.server-address {
+    font-family: monospace;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 5px 10px;
+    border-radius: 4px;
+    margin: 5px 0;
+    font-size: 0.9em;
+    word-break: break-all;
+}
+
+.java-address {
+    color: #54c754;
+}
+
+.server-version {
+    color: #54c754;
+    font-size: 0.9em;
+    margin: 5px 0;
+}
+
+.server-description {
+    color: #ddd;
+    margin: 10px 0;
+}
+
+.file-runner-section {
+    margin-top: 60px;
+    padding: 20px;
+}
+
+.file-runner-section h2 {
+    font-size: 2.5em;
+    text-shadow: 
+        2px 2px #000,
+        -2px -2px #000,
+        2px -2px #000,
+        -2px 2px #000;
+    color: #54c754;
+    margin-bottom: 30px;
+}
+
+.file-input-container {
+    background-color: #34495e;
+    border: 4px solid #000;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 600px;
+    box-shadow: 
+        inset -2px -4px #0006,
+        inset 2px 2px #fff7;
+    clip-path: polygon(
+        0 4px,
+        4px 0,
+        calc(100% - 4px) 0,
+        100% 4px,
+        100% calc(100% - 4px),
+        calc(100% - 4px) 100%,
+        4px 100%,
+        0 calc(100% - 4px)
+    );
+}
+
+.file-input-container p {
+    margin-bottom: 20px;
+    color: #ddd;
+}
+
+#fileInput {
+    display: none;
+}
+
+.file-label {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #727272;
+    border: 3px solid #000;
+    color: white;
+    font-size: 1.5em;
+    cursor: pointer;
+    margin-bottom: 20px;
+    box-shadow: 
+        inset -2px -4px #0006,
+        inset 2px 2px #fff7;
+}
+
+.file-label:hover {
+    background-color: #8b8b8b;
+}
+
+#selectedFileName {
+    margin: 10px 0;
+    font-family: monospace;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 5px 10px;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+.download-button {
+    background-color: var(--minecraft-green);
+}
+
+.download-button:hover {
+    background-color: #65d965;
+}
+
+.show-more-container {
+    margin-top: 30px;
+    text-align: center;
+}
+
+#showMoreServers {
+    background-color: #54c754;
+}
+
+#showMoreServers:hover {
+    background-color: #65d965;
+}
+
+.ad-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.ad-content {
+    background-color: #34495e;
+    border: 4px solid #000;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 
+        inset -2px -4px #0006,
+        inset 2px 2px #fff7;
+    max-width: 400px;
+    width: 90%;
+    position: relative;
+    animation: adPopup 0.3s ease-out;
+}
+
+@keyframes adPopup {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.ad-content h3 {
+    color: #FFFF54;
+    font-size: 2em;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px #000;
+}
+
+.ad-content p {
+    margin: 15px 0;
+    color: #fff;
+}
+
+.ad-content .minecraft-button {
+    margin: 10px auto;
+    display: block;
+    background-color: #54c754;
+}
+
+.ad-content .minecraft-button:hover {
+    background-color: #65d965;
+}
+
+.timer {
+    margin-top: 20px;
+    color: #FFFF54;
+    font-size: 1.2em;
+}
+
+.side-ads {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 160px;
+    background-color: #34495e;
+    border: 4px solid #000;
+    padding: 15px;
+    box-shadow: 
+        inset -2px -4px #0006,
+        inset 2px 2px #fff7,
+        0 0 20px rgba(0, 0, 0, 0.5);
+    z-index: 100;
+    clip-path: polygon(
+        0 4px,
+        4px 0,
+        calc(100% - 4px) 0,
+        100% 4px,
+        100% calc(100% - 4px),
+        calc(100% - 4px) 100%,
+        4px 100%,
+        0 calc(100% - 4px)
+    );
+}
+
+.side-ads .minecraft-button {
+    font-size: 0.9em;
+    padding: 8px 15px;
+    min-width: auto;
+    margin: 8px 0;
+    width: 100%;
+    text-align: center;
+}
+
+.side-ads h3 {
+    color: #FFFF54;
+    font-size: 1.4em;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px #000;
+    text-align: center;
+}
+
+.side-ad-left {
+    left: 10px;
+}
+
+.side-ad-right {
+    right: 10px;
+}
+
+.side-ads .minecraft-button {
+    font-size: 0.9em;
+    padding: 8px 15px;
+    min-width: auto;
+    margin: 8px 0;
+    width: 100%;
+    text-align: center;
+}
+
+@media (max-width: 1600px) {
+    .side-ads {
+        display: none;
+    }
+}
+
+.ad-content .close-ad {
+    display: none;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #ff4444;
+    padding: 5px 10px;
+    border: 2px solid #000;
+    cursor: pointer;
+    color: white;
+}
+
+.ad-content .close-ad.active {
+    display: block;
+}
+
+.rotating-ad {
+    animation: adPopup 0.5s ease-out;
+    max-width: 500px;
+    width: 90%;
+    background: linear-gradient(135deg, #34495e, #2c3e50);
+    border: 4px solid #000;
+    padding: 30px;
+    text-align: center;
+    position: relative;
+}
+
+.rotating-ad::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #54c754, #FFFF54);
+}
+
+.rotating-ad h3 {
+    color: #FFFF54;
+    font-size: 2.2em;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px #000;
+}
+
+.rotating-ad p {
+    color: #fff;
+    font-size: 1.2em;
+    margin: 15px 0;
+    line-height: 1.4;
+}
+
+.rotating-ad .minecraft-button {
+    margin: 20px auto;
+    background-color: #54c754;
+    font-size: 1.3em;
+}
+
+.rotating-ad .minecraft-button:hover {
+    background-color: #65d965;
+}
+
+.rotating-ad .close-ad {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #ff4444;
+    padding: 5px 10px;
+    border: 2px solid #000;
+    cursor: pointer;
+    color: white;
+    font-family: 'VT323', monospace;
+    box-shadow: 
+        inset -2px -4px #0006,
+        inset 2px 2px #fff7;
+}
+
+.rotating-ad .close-ad:hover {
+    background: #ff6666;
+}
