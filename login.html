@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaming Hub - Login</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="minecraft-title">Gaming Hub</h1>
+        
+        <div class="auth-container">
+            <div class="auth-tabs">
+                <button class="minecraft-button tab-button active" data-tab="login">
+                    <span class="button-content">Login</span>
+                </button>
+                <button class="minecraft-button tab-button" data-tab="signup">
+                    <span class="button-content">Sign Up</span>
+                </button>
+            </div>
+
+            <div class="auth-form active" id="login-form">
+                <input type="text" placeholder="Username" id="login-username" class="minecraft-input">
+                <input type="password" placeholder="Password" id="login-password" class="minecraft-input">
+                <button class="minecraft-button" id="login-button">
+                    <span class="button-content">Login</span>
+                </button>
+            </div>
+
+            <div class="auth-form" id="signup-form">
+                <input type="text" placeholder="Username" id="signup-username" class="minecraft-input">
+                <input type="email" placeholder="Email" id="signup-email" class="minecraft-input">
+                <input type="password" placeholder="Password" id="signup-password" class="minecraft-input">
+                <input type="password" placeholder="Confirm Password" id="signup-confirm-password" class="minecraft-input">
+                <button class="minecraft-button" id="signup-button">
+                    <span class="button-content">Sign Up</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="auth.js"></script>
+</body>
+</html>
